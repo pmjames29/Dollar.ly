@@ -4,6 +4,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello_world():
+    print(MONGO_URL)
     return "<p>Hello, World!</p>"
 
 if __name__ == "__main__":
