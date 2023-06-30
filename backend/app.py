@@ -22,8 +22,8 @@ def addexpense(expense):
 @app.route("/getexpenses/")
 def getexpenses():
     expenses_json = []
-    if expenses.find({}):
-        for expense in expenses.find({}).sort("date"):
+    if expenses.find():
+        for expense in expenses.find().sort("date"):
             expenses_json.append(
                 {
                     "expense": expense["expense"],
