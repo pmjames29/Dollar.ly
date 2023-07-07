@@ -26,6 +26,7 @@ jwt = JWTManager(app)
 CORS(app)
 
 
+## API Endpoint for registering a user into the system
 @app.route("/users/register", methods=["POST"])
 def register():
     users = mongo.db.users
@@ -54,6 +55,7 @@ def register():
     return jsonify({"result": result})
 
 
+## API Endpoint for logging in a user to the system
 @app.route("/users/login", methods=["POST"])
 def login():
     users = mongo.db.users
