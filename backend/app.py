@@ -10,7 +10,9 @@ from flask_jwt_extended import create_access_token
 app = Flask(__name__)
 
 app.config["MONGO_DBNAME"] = "webapp"
-app.config["MONGO_URI"] = "mongodb://localhost:27017/webapp"
+app.config["MONGO_URI"] = "mongodb://mongo:27017/webapp"
+app.config["MONGO_USERNAME"] = "pmjames29"
+app.config["MONGO_PASSWORD"] = "philippians413"
 
 ## The secret key will accept any key to ensure protection of access
 ## to the API endpoint in questions
