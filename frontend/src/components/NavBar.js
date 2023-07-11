@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
-import {BrowserRoute, Routes, Route, Navigate, Link} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 
-class NavBar extends Component {
+export default class NavBar extends Component {
+    
     logOut(e) {
         e.preventDefault()
         localStorage.removeItem('usertoken')
@@ -12,14 +13,14 @@ class NavBar extends Component {
         const loginRegLink = (
             <ul className='navbar-nav'>
                 <li className='nav-item'>
-                    <Link to='/login' className='nav-link'>
+                    <NavLink to='/login' className='nav-link'>
                         Login
-                    </Link>
+                    </NavLink>
                 </li>
                 <li className='nav-item'>
-                    <Link to='register' className='nav-link'>
+                    <NavLink to='/register' className='nav-link'>
                         Register
-                    </Link>
+                    </NavLink>
                 </li>
             </ul>
         )
@@ -27,9 +28,9 @@ class NavBar extends Component {
         const userLink = (
             <ul className='navbar-nav'>
                 <li className='nav-item'>
-                    <Link to='/profile' className='nav-link'>
+                    <NavLink to='/profile' className='nav-link'>
                         User
-                    </Link>
+                    </NavLink>
                 </li>
                 <li className='nav-item'>
                     <a href='#' onClick={this.logOut.bind(this)} className='nav-link'>
@@ -40,10 +41,11 @@ class NavBar extends Component {
         )
 
         return (
-            <nav className='navbar navbar-expand-lg navbar-dark bd-dark rounded'>
+            <nav className='navbar navbar-expand-lg navbar-dark bg-dark rounded'>
                 <button className='navbar-toggler'
                     type='button'
                     data-toggle='collapse'
+                    data-target='#navbar1'
                     aria-controls='navbar1'
                     aria-expanded='false'
                     aria-label='Toggle navigation'>
@@ -53,9 +55,9 @@ class NavBar extends Component {
                 <div className='collapse navbar-collapse justify-content-md-center' id='navbar1'>
                     <ul className='navbar-nav'>
                         <li className='nav-item'>
-                            <Link to='/' className='nav-link'>
+                            <NavLink to='/' className='nav-link'>
                                 Home
-                            </Link>
+                            </NavLink>
                         </li>
                     </ul>
                     {localStorage.usertoken ? userLink : loginRegLink}
@@ -64,20 +66,3 @@ class NavBar extends Component {
         )
     }
 }
-
-function withRouter(Component) {
-    function ComponentWithRouterProp(props) {
-        let location = useLocation();
-        let navigate = useNavigate();
-        let params = useParams();
-        return (
-            <Component
-                {...props}
-                router={{ location, navigate, params }}
-            />
-        );
-    }
-    return ComponentWithRouterProp;
-}
-
-export default withRouter(NavBar)

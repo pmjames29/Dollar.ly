@@ -1,5 +1,7 @@
 import axios from 'axios'
 
+axios.defaults.baseURL = 'http://localhost:5000';
+
 export const register = newUser => {
     return axios
         .post("users/register", {

@@ -21,7 +21,7 @@ services:
         restart: unless-stopped
         command: mongod --auth
         environment:
-            MONGO_INITDB_ROOT_USERNAME: "pmjames29@gmail.com"
+            MONGO_INITDB_ROOT_USERNAME: "pmjames29"
             MONGO_INITDB_ROOT_PASSWORD: "philippians413"
             MONGO_INITDB_DATABASE: webapp
             MONGODB_DATA_DIR: /data/db
@@ -39,8 +39,8 @@ services:
             - "5000:5000"
         environment:
             MONGODB_HOST: mongodb
-            MONGODB_USERNAME: "apiuser"
-            MONGODB_PASSWORD: "apipassword"
+            MONGODB_USERNAME: "pmjames29@gmail.com"
+            MONGODB_PASSWORD: "philippians413"
         volumes:
             - appdata:/var/www
         depends_on:

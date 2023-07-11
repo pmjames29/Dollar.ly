@@ -1,7 +1,5 @@
-import os
-
 from datetime import datetime
-from flask import Flask, Response, request, jsonify, json
+from flask import Flask, request, jsonify, json
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from flask_bcrypt import Bcrypt
@@ -28,16 +26,14 @@ CORS(app)
 ## API Endpoint for registering a user into the system
 @app.route("/users/register", methods=["POST"])
 def register():
-    users = mongo.db.users
+    users = mongo.db['users']
     first_name = request.get_json()["first_name"]
     last_name = request.get_json()["last_name"]
     email = request.get_json()["email"]
-    password = bcrypt.generate_password_hash(request.get_json()["password"]).decode(
-        "utf-8"
-    )
+    password = bcrypt.generate_password_hash(request.get_json()["password"]).decode("utf-8")
     created = datetime.utcnow()
 
-    user_id = users.insert(
+    user_id = users.insert_one(
         {
             "first_name": first_name,
             "last_name": last_name,
@@ -57,7 +53,7 @@ def register():
 ## API Endpoint for logging in a user to the system
 @app.route("/users/login", methods=["POST"])
 def login():
-    users = mongo.db.users
+    users = mongo.db['users']
     email = request.get_json()["email"]
     password = request.get_json()["password"]
     result = ""

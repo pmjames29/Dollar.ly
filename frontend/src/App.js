@@ -1,6 +1,5 @@
-import logo from './logo.svg';
 import React, {Component} from 'react'
-import {BrowserRouter as Router, Route} from 'react-router-dom'
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import './App.css';
 
 import NavBar from './components/NavBar'
@@ -12,17 +11,17 @@ import Profile from './components/Profile'
 class App extends Component {
     render() {
         return (
-            <Router>
+            <BrowserRouter>
                 <div className='App'>
                     <NavBar />
-                    <Route exact path='/' component={Landing} />
-                    <div className='container'>
-                        <Route exact path='/register' component={Register} />
-                        <Route exact path='/login' component={Login} />
-                        <Route exact path='/profile' component={Profile} />
-                    </div>
+                    <Routes>
+                        <Route path='/' element={<Landing />} />
+                        <Route path='/register' element={<Register />} />
+                        <Route path='/login' element={<Login />} />
+                        <Route path='/profile' element={<Profile />} />
+                    </Routes>
                 </div>
-            </Router>
+            </BrowserRouter>
         )
     }
 }
