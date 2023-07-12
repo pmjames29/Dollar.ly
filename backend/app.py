@@ -10,9 +10,9 @@ from flask_jwt_extended import create_access_token
 app = Flask(__name__)
 
 app.config["MONGO_DBNAME"] = "webapp"
-app.config["MONGO_URI"] = "mongodb://mongo:27017/webapp"
-app.config["MONGO_USERNAME"] = "pmjames29"
-app.config["MONGO_PASSWORD"] = "philippians413"
+app.config[
+    "MONGO_URI"
+] = "mongodb://pmjames29:philippians413@mongo:27017/webapp?authSource=admin"
 
 ## The secret key will accept any key to ensure protection of access
 ## to the API endpoint in questions
@@ -28,11 +28,13 @@ CORS(app)
 ## API Endpoint for registering a user into the system
 @app.route("/users/register", methods=["POST"])
 def register():
-    users = mongo.db['users']
+    users = mongo.db["users"]
     first_name = request.get_json()["first_name"]
     last_name = request.get_json()["last_name"]
     email = request.get_json()["email"]
-    password = bcrypt.generate_password_hash(request.get_json()["password"]).decode("utf-8")
+    password = bcrypt.generate_password_hash(request.get_json()["password"]).decode(
+        "utf-8"
+    )
     created = datetime.utcnow()
 
     user_id = users.insert_one(
@@ -55,7 +57,7 @@ def register():
 ## API Endpoint for logging in a user to the system
 @app.route("/users/login", methods=["POST"])
 def login():
-    users = mongo.db['users']
+    users = mongo.db["users"]
     email = request.get_json()["email"]
     password = request.get_json()["password"]
     result = ""
