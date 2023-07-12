@@ -37,15 +37,15 @@ def register():
     )
     created = datetime.utcnow()
 
-    user_id = users.insert_one(
-        {
-            "first_name": first_name,
-            "last_name": last_name,
-            "email": email,
-            "password": password,
-            "created": created,
-        }
-    )
+    raw_user = {
+        "first_name": first_name,
+        "last_name": last_name,
+        "email": email,
+        "password": password,
+        "created": created,
+    }
+
+    user_id = users.insert_one(raw_user).inserted_id
 
     new_user = users.find_one_or_404({"_id": user_id})
 

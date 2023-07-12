@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {register} from './UserFunctions'
+import {useNavigate} from 'react-router-dom'
 
 export default class Register extends Component {
     constructor() {
