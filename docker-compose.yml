@@ -19,10 +19,10 @@ services:
         image: mongo
         container_name: mongo
         restart: unless-stopped
-        command: mongod
+        command: mongod --auth
         environment:
-            # MONGO_INITDB_ROOT_USERNAME: "pmjames29"
-            # MONGO_INITDB_ROOT_PASSWORD: "philippians413"
+            MONGO_INITDB_ROOT_USERNAME: "pmjames29"
+            MONGO_INITDB_ROOT_PASSWORD: "philippians413"
             MONGO_INITDB_DATABASE: webapp
             MONGODB_DATA_DIR: /data/db
         volumes:

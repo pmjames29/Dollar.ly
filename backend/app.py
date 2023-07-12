@@ -47,7 +47,7 @@ def register():
         }
     )
 
-    new_user = users.find_one({"_id": user_id})
+    new_user = users.find_one_or_404({"_id": user_id})
 
     result = {"email": new_user["email"] + " registered"}
 
