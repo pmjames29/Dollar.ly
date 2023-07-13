@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {register} from './UserFunctions'
-import {useNavigate} from 'react-router-dom'
+import {Navigate} from 'react-router-dom'
 
 export default class Register extends Component {
     constructor() {
@@ -31,7 +31,7 @@ export default class Register extends Component {
         }
 
         register(newUser).then(res => {
-            this.props.history.push(`/login`)
+            <Navigate to="/login" replace={true} />
         })
     }
 

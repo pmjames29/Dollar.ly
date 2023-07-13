@@ -1,12 +1,12 @@
 import React, {Component} from 'react'
-import {NavLink} from 'react-router-dom'
+import {NavLink, Navigate} from 'react-router-dom'
 
 export default class NavBar extends Component {
     
     logOut(e) {
         e.preventDefault()
         localStorage.removeItem('usertoken')
-        this.props.history.push(`/`)
+        return <Navigate to='/' replace={true} />
     }
 
     render() {
