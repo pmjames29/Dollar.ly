@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import {register} from './UserFunctions'
-import {Navigate} from 'react-router-dom'
 
 export default class Register extends Component {
     constructor() {
@@ -31,7 +30,7 @@ export default class Register extends Component {
         }
 
         register(newUser).then(res => {
-            <Navigate to="/login" replace={true} />
+            this.props.navigate('/login')
         })
     }
 

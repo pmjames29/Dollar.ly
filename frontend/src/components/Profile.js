@@ -14,10 +14,11 @@ export default class Profile extends Component {
     componentDidMount () {
         const token = localStorage.usertoken
         const decoded = jwt_decode(token)
+        console.log(decoded)
         this.setState({
-            first_name: decoded.identity.first_name,
-            last_name: decoded.identity.last_name,
-            email: decoded.identity.email
+            first_name: decoded.sub.first_name,
+            last_name: decoded.sub.last_name,
+            email: decoded.sub.email
         })
     }
 

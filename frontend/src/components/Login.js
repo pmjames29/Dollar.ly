@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import {login} from './UserFunctions'
-import {Navigate} from 'react-router-dom'
 
 export default class Login extends Component {
     constructor() {
@@ -27,8 +26,9 @@ export default class Login extends Component {
         }
 
         login(user).then(res => {
+            console.log(res)
             if (!res.error) {
-                <Navigate to='/profile' replace={true} />
+                this.props.navigate('/profile')
             }
         })
     }
