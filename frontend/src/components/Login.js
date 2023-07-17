@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import {login} from './UserFunctions'
+import Popup from 'reactjs-popup'
+import 'reactjs-popup/dist/index.css'
 
 export default class Login extends Component {
     constructor() {
@@ -29,6 +31,12 @@ export default class Login extends Component {
             console.log(res)
             if (!res.error) {
                 this.props.navigate('/profile')
+            } else {
+                return (
+                    <Popup position="right center">
+                        <div>Invalid username or password</div>
+                    </Popup>
+                )
             }
         })
     }
