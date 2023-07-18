@@ -1,7 +1,5 @@
 import React, {Component} from 'react'
 import {login} from './UserFunctions'
-import Popup from 'reactjs-popup'
-import 'reactjs-popup/dist/index.css'
 
 export default class Login extends Component {
     constructor() {
