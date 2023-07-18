@@ -1,2 +1,5 @@
 ## Ignore Virtual Environment Files
 venv/*
+
+## Ignore __pycache__ files
+__pycache__/*

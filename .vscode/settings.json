@@ -1,0 +1,8 @@
+{
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "python.formatting.provider": "none",
+  "workbench.colorTheme": "Ayu Mirage Bordered",
+  "workbench.preferredDarkColorTheme": "Ayu Mirage Bordered"
+}

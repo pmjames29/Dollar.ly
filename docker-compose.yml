@@ -1,8 +1,8 @@
 version: '3.7'
 
 services:
-
-    client: 
+    
+    client:
         build:
             context: ./frontend
             dockerfile: Dockerfile
@@ -21,9 +21,9 @@ services:
         restart: unless-stopped
         command: mongod --auth
         environment:
-            MONGO_INITDB_ROOT_USERNAME: ""
-            MONGO_INITDB_ROOT_PASSWORD: ""
-            MONGO_INITDB_DATABASE:
+            MONGO_INITDB_ROOT_USERNAME: "pmjames29"
+            MONGO_INITDB_ROOT_PASSWORD: "philippians413"
+            MONGO_INITDB_DATABASE: webapp
             MONGODB_DATA_DIR: /data/db
         volumes:
         - mongodbdata:/data/db
@@ -39,8 +39,8 @@ services:
             - "5000:5000"
         environment:
             MONGODB_HOST: mongodb
-            MONGODB_USERNAME: "apiuser"
-            MONGODB_PASSWORD: "apipassword"
+            MONGODB_USERNAME: "pmjames29"
+            MONGODB_PASSWORD: "philippians413"
         volumes:
             - appdata:/var/www
         depends_on:
@@ -49,13 +49,14 @@ services:
             - frontend
             - backend
 
-    networks:
-        frontend:
-            driver: bridge
-        backend:
-            driver: bridge
-    volumes:
-        mongodbdata:
-            driver: local
-        appdata:
-            driver: local
+networks:
+    frontend:
+        driver: bridge
+    backend:
+        driver: bridge
+volumes:
+    mongodbdata:
+        driver: local
+    appdata:
+        driver: local
+

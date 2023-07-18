@@ -1,0 +1,6 @@
+flask
+flask_pymongo
+flask_bcrypt
+flask_cors
+flask_jwt_extended
+gunicorn
