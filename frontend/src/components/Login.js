@@ -30,22 +30,23 @@ export default class Login extends Component {
             if (!res.error) {
                 this.props.navigate('/profile')
             } else {
-                return (
-                    <Popup position="right center">
-                        <div>Invalid username or password</div>
-                    </Popup>
-                )
+                localStorage.setItem('error', res.error)
             }
         })
     }
 
     render() {
+        const failedLogin = (
+            <h1 className='h3 mb-3 font-weight-normal'>Invalid email or password</h1>
+        )
+
         return (
             <div className='container'>
                 <div className='row'>
                     <div className='col-md-6 mt-5 mx-auto'>
                         <form noValidate onSubmit={this.onSubmit}>
                             <h1 className='h3 mb-3 font-weight-normal'>Please sign in</h1>
+                            {localStorage.error ? failedLogin : ''}
                             <div className='form-group'>
                                 <label htmlFor='email'>Email Address</label>
                                 <input type='email'
