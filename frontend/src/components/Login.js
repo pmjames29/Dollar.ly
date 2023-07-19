@@ -6,7 +6,8 @@ export default class Login extends Component {
         super()
         this.state = {
             email: '',
-            password: ''
+            password: '',
+            loginError: false
         }
 
         this.onChange = this.onChange.bind(this)
@@ -28,16 +29,17 @@ export default class Login extends Component {
         login(user).then(res => {
             console.log(res)
             if (!res.error) {
+                this.setState({loginError: false})
                 this.props.navigate('/profile')
             } else {
-                localStorage.setItem('error', res.error)
+                this.setState({loginError: true})
             }
         })
     }
 
     render() {
         const failedLogin = (
-            <h1 className='h3 mb-3 font-weight-normal'>Invalid email or password</h1>
+            <h3 className='h5 mb-3 font-weight-normal' style={{color: 'red'}}>Invalid email or password</h3>
         )
 
         return (
@@ -46,7 +48,7 @@ export default class Login extends Component {
                     <div className='col-md-6 mt-5 mx-auto'>
                         <form noValidate onSubmit={this.onSubmit}>
                             <h1 className='h3 mb-3 font-weight-normal'>Please sign in</h1>
-                            {localStorage.error ? failedLogin : ''}
+                            {this.state.loginError ? failedLogin : ''}
                             <div className='form-group'>
                                 <label htmlFor='email'>Email Address</label>
                                 <input type='email'
