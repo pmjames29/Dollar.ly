@@ -1,4 +1,4 @@
-# EML (Everyday Medium List)
+# Login System
 
-List app using Flask, React, MongoDB, and Docker
-Used to list movies, TV shows, video games, and books
+Login app using Flask, React, MongoDB, and Docker.
+Utilizes secure net keys to encrypt login and sensitive information for accounts.
